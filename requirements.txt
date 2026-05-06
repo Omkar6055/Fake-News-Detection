@@ -1,0 +1,25 @@
+# Core dependencies for OpenFactVerification
+backoff
+bs4
+google-cloud-storage
+google-generativeai
+httpx
+nltk
+opencv-python
+pandas
+playwright
+playwright_stealth
+sentence-transformers
+spacy>=3.4.0
+tiktoken
+torch
+pyyaml
+requests
+Pillow
+gunicorn
+flask>=2.3.0
+flask-cors>=4.0.0
+
+# Note: After installing requirements, run:
+# python -m spacy download en_core_web_sm
+# to download the English language model for spaCy

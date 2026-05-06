@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenFactVerification</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Top Header -->
+        <div class="top-header">
+            <div class="logo-section">
+                <div class="logo-icon">🛡️</div>
+                <span class="app-title">FactCheck AI</span>
+            </div>
+            <div class="connection-status" id="connectionStatus">
+                <div class="status-dot"></div>
+                <span class="status-text">Checking...</span>
+            </div>
+        </div>
+
+        <!-- Credibility Metrics Bar -->
+        <div class="metrics-bar" id="metricsBar">
+            <div class="metric-item">
+                <div class="metric-value" id="overallCredibility">--</div>
+                <div class="metric-label">Overall Credibility</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-value" id="totalClaims">--</div>
+                <div class="metric-label">Total Claims</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-value" id="supportedClaims">--</div>
+                <div class="metric-label">Supported</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-value" id="refutedClaims">--</div>
+                <div class="metric-label">Refuted</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-value" id="controversialClaims">--</div>
+                <div class="metric-label">Controversial</div>
+            </div>
+        </div>
+
+        <!-- Input Section -->
+        <div class="input-section">
+            <h4>Enter Fact to Check</h4>
+            
+            <textarea 
+                id="textInput" 
+                class="text-input"
+                placeholder="Enter the text you want to fact-check here..."
+                rows="3"
+            ></textarea>
+            <div class="input-actions">
+                <button id="factCheckTextButton" class="action-btn primary full-width">
+                    Check Facts
+                </button>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-section" id="resultsSection" style="display: none;">
+            <!-- Loading State -->
+            <div class="loading-state" id="loadingState">
+                <div class="loading-spinner"></div>
+                <div class="loading-text" id="loadingMessage">Connecting to fact-check server…</div>
+                <div class="loading-steps">
+                    <div class="step-dot active"></div>
+                    <div class="step-dot"></div>
+                    <div class="step-dot"></div>
+                    <div class="step-dot"></div>
+                    <div class="step-dot"></div>
+                </div>
+                <div class="loading-timer">⏱ <span id="elapsedTime">0</span>s elapsed &nbsp;·&nbsp; This may take up to 2 minutes</div>
+            </div>
+
+            <!-- Results Display -->
+            <div class="results-display" id="resultsDisplay" style="display: none;">
+                <h4>Fact Check Results</h4>
+                
+                <!-- Claims Overview -->
+                <div class="claims-overview">
+                    <h5>Claims Analysis</h5>
+                    <div class="claims-list" id="claimsList">
+                        <!-- Claims will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="results-actions">
+                    <button id="copyResultsButton" class="action-btn secondary">
+                        📄 Copy Report
+                    </button>
+                    <button id="clearResultsButton" class="action-btn secondary">
+                        🗑️ Clear
+                    </button>
+                </div>
+            </div>
+
+            <!-- Error State -->
+            <div class="error-state" id="errorState" style="display: none;">
+                <div class="error-icon">❌</div>
+                <h3>Error</h3>
+                <p id="errorMessage">Something went wrong.</p>
+                <div class="error-actions">
+                    <button id="retryButton" class="action-btn primary">Retry</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="popup-footer">
+            <div class="footer-links">
+                <a href="#" id="helpLink">Help</a>
+                <a href="#" id="settingsLink">Settings</a>
+            </div>
+            <div class="version-info">v1.0.0</div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+# Simplified requirements without compilation issues
+backoff
+beautifulsoup4
+google-cloud-storage
+google-generativeai
+httpx
+nltk
+opencv-python
+pandas
+playwright
+playwright-stealth
+sentence-transformers
+tiktoken
+pyyaml
+requests
+Pillow
+gunicorn
+flask>=2.3.0
+flask-cors>=4.0.0
+
+# Install spacy separately with: pip install spacy --only-binary :all:
+# Then: python -m spacy download en_core_web_sm

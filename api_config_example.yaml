@@ -1,0 +1,18 @@
+# API Configuration for OpenFactVerification
+# ⚠️  DO NOT commit real API keys to version control!
+#
+# Set your keys as environment variables instead:
+#   set SERPER_API_KEY=your_key_here
+#   set GROQ_API_KEY=your_key_here
+#
+# Or place them here for local development only (add this file to .gitignore)
+
+# Required API Keys — override via environment variables in production
+SERPER_API_KEY: "your_serper_api_key_here"
+GROQ_API_KEY: "your_groq_api_key_here"
+
+# GCS Configuration (DISABLED for local processing)
+# Leave commented out to use local file processing
+# GCS_BUCKET_NAME: ""
+# GCS_BASE_URL: ""
+# GOOGLE_APPLICATION_CREDENTIALS: ""

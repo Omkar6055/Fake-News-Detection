@@ -1,0 +1,530 @@
+/* OpenFactVerification Chrome Extension - Main App Style */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #0a0a0f;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+    min-height: unset;
+    height: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* App Container */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    background: #0a0a0f;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    margin: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Top Header */
+.top-header {
+    background: linear-gradient(135deg, #a78bfa, #8b5cf6, #6d28d9);
+    color: white;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 12px 12px 0 0;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    font-size: 20px;
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.app-title {
+    font-weight: 700;
+    font-size: 16px;
+    color: white;
+}
+
+.connection-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.15);
+    padding: 4px 10px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ffc107;
+    animation: pulse 2s infinite;
+}
+
+.status-dot.connected {
+    background: #00d4ff;
+    box-shadow: 0 0 8px #00d4ff;
+    animation: none;
+}
+
+.status-dot.disconnected {
+    background: #ef4444;
+    box-shadow: 0 0 8px #ef4444;
+    animation: none;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 8px #ffc107; }
+    50% { opacity: 0.5; box-shadow: none; }
+}
+
+/* Credibility Metrics Bar */
+.metrics-bar {
+    background: #111118;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-around;
+    gap: 6px;
+    text-align: center;
+}
+
+.metric-item {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 6px;
+    border-radius: 6px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #1a1a24;
+}
+
+.metric-item:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 8px rgba(108, 99, 255, 0.3);
+}
+
+.metric-value {
+    font-size: 1.1em;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.metric-label {
+    font-size: 0.7em;
+    color: #9ca3af;
+    font-weight: 500;
+}
+
+/* Metric Item Colors */
+.metric-item:nth-child(1) .metric-value { color: #00d4ff; }
+.metric-item:nth-child(2) .metric-value { color: #a78bfa; }
+.metric-item:nth-child(3) .metric-value { color: #10b981; }
+.metric-item:nth-child(4) .metric-value { color: #ef4444; }
+.metric-item:nth-child(5) .metric-value { color: #f59e0b; }
+
+/* Input Section */
+.input-section {
+    padding: 20px;
+    background: #0a0a0f;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.input-section h4 {
+    margin-bottom: 16px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+
+/* Text Input */
+.text-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+    min-height: 70px;
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+    background: #111118;
+    color: #ffffff;
+}
+
+.text-input::placeholder {
+    color: #6b7280;
+}
+
+.text-input:focus {
+    outline: none;
+    border-color: #6c63ff;
+    background: #111118;
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+}
+
+
+
+/* Action Buttons */
+.input-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    flex: 1;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.action-btn.full-width {
+    width: 100%;
+}
+
+.action-btn.primary {
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+    color: white;
+    box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
+}
+
+.action-btn.primary:hover {
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+    transform: translateY(-1px);
+}
+
+.action-btn.secondary {
+    background: #111118;
+    color: #9ca3af;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.action-btn.secondary:hover {
+    background: #1a1a24;
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.action-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Results Section */
+.results-section {
+    flex: 1;
+    padding: 20px;
+    background: #0a0a0f;
+    overflow-y: auto;
+}
+
+.results-section h4 {
+    margin-bottom: 16px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* Loading State */
+.loading-state {
+    text-align: center;
+    padding: 24px 16px;
+}
+
+.loading-spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top: 3px solid #6c63ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 12px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    color: #9ca3af;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.loading-timer {
+    color: #6b7280;
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+.loading-steps {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin: 10px 0 4px;
+}
+
+.step-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: background 0.4s ease;
+}
+
+.step-dot.active {
+    background: #00d4ff;
+    box-shadow: 0 0 8px #00d4ff;
+    animation: stepPulse 1.2s infinite;
+}
+
+@keyframes stepPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.35); opacity: 0.7; }
+}
+
+/* Claims Overview */
+.claims-overview {
+    background: #111118;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.claims-overview h5 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 14px;
+}
+
+.claims-list {
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.claim-item {
+    margin-bottom: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: #1a1a24;
+}
+
+.claim-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-1px);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.claim-status-badge {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.claim-text {
+    font-size: 11px;
+    line-height: 1.4;
+    color: #e5e7eb;
+    font-weight: 500;
+}
+
+.claim-evidence-count {
+    font-size: 9px;
+    color: #9ca3af;
+    margin-top: 4px;
+}
+
+/* Claim Status Colors */
+.claim-item.supported {
+    border-left: 4px solid #10b981;
+}
+
+.claim-item.supported .claim-status-badge {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.claim-item.refuted {
+    border-left: 4px solid #ef4444;
+}
+
+.claim-item.refuted .claim-status-badge {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.claim-item.controversial {
+    border-left: 4px solid #f59e0b;
+}
+
+.claim-item.controversial .claim-status-badge {
+    background: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.claim-item.not-checked {
+    border-left: 4px solid #6b7280;
+}
+
+.claim-item.not-checked .claim-status-badge {
+    background: rgba(107, 114, 128, 0.2);
+    color: #9ca3af;
+    border: 1px solid rgba(107, 114, 128, 0.3);
+}
+
+/* Results Actions */
+.results-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+/* Error State */
+.error-state {
+    text-align: center;
+    padding: 24px 16px;
+}
+
+.error-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.error-state h3 {
+    color: #ef4444;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.error-state p {
+    color: #9ca3af;
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 16px;
+}
+
+.error-actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* Footer */
+.popup-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #111118;
+    border-radius: 0 0 12px 12px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 12px;
+}
+
+.footer-links a {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.footer-links a:hover {
+    color: #00d4ff;
+}
+
+.version-info {
+    font-size: 9px;
+    color: #6b7280;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: #111118;
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.results-section, .claim-item {
+    animation: slideIn 0.3s ease-out;
+}

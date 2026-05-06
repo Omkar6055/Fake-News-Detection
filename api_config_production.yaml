@@ -1,0 +1,12 @@
+# Production API Configuration for OpenFactVerification
+# This file will be deployed and uses environment variables for sensitive data
+
+# Required API Keys (will be overridden by environment variables)
+SERPER_API_KEY: ""
+GEMINI_API_KEY: ""
+
+# GCS Configuration (DISABLED for local processing)
+# Leave commented out to use local file processing
+# GCS_BUCKET_NAME: ""
+# GCS_BASE_URL: ""
+# GOOGLE_APPLICATION_CREDENTIALS: ""

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenFactVerification Settings</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+<body>
+    <div class="options-container">
+        <!-- Header -->
+        <header class="options-header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">📋</div>
+                    <div>
+                        <h1>OpenFactVerification</h1>
+                        <p>Extension Settings</p>
+                    </div>
+                </div>
+                <div class="version-badge">v1.0.0</div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="options-content">
+            <!-- Connection Settings -->
+            <section class="settings-section">
+                <h2>🔗 Connection Settings</h2>
+                <div class="setting-group">
+                    <label for="backendUrl">Backend Server URL</label>
+                    <input 
+                        type="url" 
+                        id="backendUrl" 
+                        placeholder="http://localhost:2024"
+                        class="setting-input"
+                    >
+                    <div class="setting-help">
+                        The URL of your OpenFactVerification backend server. Default is http://localhost:2024
+                    </div>
+                    <div class="connection-status" id="connectionStatus">
+                        <div class="status-indicator" id="statusIndicator"></div>
+                        <span id="statusText">Not tested</span>
+                        <button id="testConnectionBtn" class="test-btn">Test Connection</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- API Configuration -->
+            <section class="settings-section">
+                <h2>🔑 API Configuration</h2>
+                <div class="setting-group">
+                    <label for="geminiApiKey">Gemini API Key</label>
+                    <div class="input-with-toggle">
+                        <input 
+                            type="password" 
+                            id="geminiApiKey" 
+                            placeholder="Enter your Gemini API key"
+                            class="setting-input"
+                        >
+                        <button type="button" class="toggle-visibility" data-target="geminiApiKey">👁️</button>
+                    </div>
+                    <div class="setting-help">
+                        Required for AI-powered claim analysis and multimodal content processing.
+                        <a href="https://makersuite.google.com/app/apikey" target="_blank">Get API Key</a>
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <label for="serperApiKey">Serper API Key (Optional)</label>
+                    <div class="input-with-toggle">
+                        <input 
+                            type="password" 
+                            id="serperApiKey" 
+                            placeholder="Enter your Serper API key"
+                            class="setting-input"
+                        >
+                        <button type="button" class="toggle-visibility" data-target="serperApiKey">👁️</button>
+                    </div>
+                    <div class="setting-help">
+                        Used for enhanced web search capabilities. If not provided, Google search will be used.
+                        <a href="https://serper.dev/" target="_blank">Get API Key</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Processing Settings -->
+            <section class="settings-section">
+                <h2>⚙️ Processing Settings</h2>
+                <div class="setting-group">
+                    <label for="maxClaims">Maximum Claims to Process</label>
+                    <input 
+                        type="number" 
+                        id="maxClaims" 
+                        min="1" 
+                        max="50" 
+                        value="10"
+                        class="setting-input"
+                    >
+                    <div class="setting-help">
+                        Limit the number of claims to analyze per request to control processing time and API costs.
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <label for="timeoutSeconds">Request Timeout (seconds)</label>
+                    <input 
+                        type="number" 
+                        id="timeoutSeconds" 
+                        min="30" 
+                        max="300" 
+                        value="120"
+                        class="setting-input"
+                    >
+                    <div class="setting-help">
+                        Maximum time to wait for fact-checking results before timing out.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Privacy Settings -->
+            <section class="settings-section">
+                <h2>🔒 Privacy & Usage</h2>
+                <div class="setting-group">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="enableAnalytics" class="setting-checkbox">
+                        <label for="enableAnalytics">Enable Usage Analytics</label>
+                    </div>
+                    <div class="setting-help">
+                        Allow anonymous usage statistics to help improve the extension.
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="enableAutoHighlight" class="setting-checkbox" checked>
+                        <label for="enableAutoHighlight">Auto-highlight Claims on Pages</label>
+                    </div>
+                    <div class="setting-help">
+                        Automatically highlight fact-checked claims on web pages after analysis.
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="showQuickCheckButton" class="setting-checkbox" checked>
+                        <label for="showQuickCheckButton">Show Quick Check Button</label>
+                    </div>
+                    <div class="setting-help">
+                        Display the quick fact-check button when text is selected on web pages.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Backend Setup -->
+            <section class="settings-section">
+                <h2>🚀 Backend Setup</h2>
+                <div class="setup-info">
+                    <h3>Running the Backend Server</h3>
+                    <p>To use this extension, you need to run the OpenFactVerification backend server locally:</p>
+                    
+                    <div class="code-block">
+                        <h4>1. Install Dependencies</h4>
+                        <code>pip install -r requirements.txt</code>
+                        <button class="copy-code" data-copy="pip install -r requirements.txt">📋</button>
+                    </div>
+
+                    <div class="code-block">
+                        <h4>2. Configure API Keys</h4>
+                        <code>export GEMINI_API_KEY=your_api_key_here</code>
+                        <button class="copy-code" data-copy="export GEMINI_API_KEY=your_api_key_here">📋</button>
+                    </div>
+
+                    <div class="code-block">
+                        <h4>3. Start the Server</h4>
+                        <code>python extension_backend.py</code>
+                        <button class="copy-code" data-copy="python extension_backend.py">📋</button>
+                    </div>
+
+                    <div class="setup-note">
+                        <strong>Note:</strong> The server will run on <code>http://localhost:2024</code> by default.
+                        Make sure no other service is using this port.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Advanced Settings -->
+            <section class="settings-section">
+                <h2>🔧 Advanced Settings</h2>
+                <div class="setting-group">
+                    <label for="customPrompt">Custom Fact-Check Prompt (Optional)</label>
+                    <textarea 
+                        id="customPrompt" 
+                        placeholder="Enter custom prompt template for fact-checking..."
+                        class="setting-textarea"
+                        rows="4"
+                    ></textarea>
+                    <div class="setting-help">
+                        Advanced users can customize the AI prompt used for fact-checking. Leave empty to use default.
+                    </div>
+                </div>
+
+                <div class="setting-group">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="enableDebugMode" class="setting-checkbox">
+                        <label for="enableDebugMode">Enable Debug Mode</label>
+                    </div>
+                    <div class="setting-help">
+                        Show detailed logging information in the browser console for troubleshooting.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Actions -->
+        <footer class="options-actions">
+            <div class="action-buttons">
+                <button id="saveSettings" class="btn btn-primary">💾 Save Settings</button>
+                <button id="resetSettings" class="btn btn-secondary">🔄 Reset to Defaults</button>
+                <button id="exportSettings" class="btn btn-secondary">📤 Export Config</button>
+                <button id="importSettings" class="btn btn-secondary">📥 Import Config</button>
+            </div>
+            <input type="file" id="importFile" accept=".json" style="display: none;">
+            
+            <div class="status-message" id="statusMessage" style="display: none;"></div>
+        </footer>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+</html>
