@@ -39,7 +39,13 @@ class FactCheckPopup {
     const statusText = document.querySelector('.status-text');
 
     try {
-      const response = await fetch('http://localhost:2025/health');
+      // Read backend URL from storage (supports both local and production)
+      const stored = await new Promise(resolve =>
+        chrome.storage.sync.get(['apiConfig'], r => resolve(r.apiConfig || {}))
+      );
+      const backendURL = (stored.backendURL || 'http://localhost:2025').replace(/\/$/, '');
+
+      const response = await fetch(`${backendURL}/health`);
       const data = await response.json();
       
       if (data.status === "ok") {

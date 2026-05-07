@@ -37,13 +37,18 @@ async function cleanOldJobs() {
 
 class FactCheckAPI {
   constructor() {
+    // Default to localhost for local development.
+    // After deployment, users set the Render URL in extension Options.
     this.baseURL = 'http://127.0.0.1:2025';
     this.isConnected = false;
   }
 
   async init() {
-    // Remove ALL storage config loading
-    // Just test connection directly
+    // Load saved backend URL from storage (may have been set to Render URL)
+    const config = await this.getStoredConfig();
+    if (config.backendURL && config.backendURL.trim()) {
+      this.baseURL = config.backendURL.trim().replace(/\/$/, ''); // remove trailing slash
+    }
     console.log('=== INIT CALLED, URL:', this.baseURL);
     await this.testConnection();
   }
@@ -242,7 +247,8 @@ chrome.runtime.onStartup.addListener(() => {
 chrome.runtime.onInstalled.addListener(() => {
   factCheckAPI.init();
   
-  // Set default configuration
+  // Set default configuration — backendURL is localhost for local dev.
+  // Change this in Options page after deploying to Render.
   chrome.storage.sync.set({
     apiConfig: {
       backendURL: 'http://localhost:2025',
@@ -278,7 +284,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 
   if (request.action === 'updateConfig') {
     chrome.storage.sync.set({ apiConfig: request.config }).then(() => {
-      factCheckAPI.baseURL = request.config.backendURL;
+      // Update the live baseURL immediately
+      factCheckAPI.baseURL = (request.config.backendURL || 'http://localhost:2025').trim().replace(/\/$/, '');
       factCheckAPI.testConnection();
       sendResponse({ success: true });
     });

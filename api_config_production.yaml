@@ -1,12 +1,9 @@
 # Production API Configuration for OpenFactVerification
-# This file will be deployed and uses environment variables for sensitive data
+# Keys here are intentionally blank — set them as Render Environment Variables:
+#   SERPER_API_KEY  → your Serper.dev API key
+#   GROQ_API_KEY    → your Groq API key
+#
+# render_app.py reads these via os.environ and overrides the values below.
 
-# Required API Keys (will be overridden by environment variables)
 SERPER_API_KEY: ""
-GEMINI_API_KEY: ""
-
-# GCS Configuration (DISABLED for local processing)
-# Leave commented out to use local file processing
-# GCS_BUCKET_NAME: ""
-# GCS_BASE_URL: ""
-# GOOGLE_APPLICATION_CREDENTIALS: ""
+GROQ_API_KEY: ""
