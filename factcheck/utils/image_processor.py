@@ -2,9 +2,16 @@ import pytesseract
 from PIL import Image
 import io
 import base64
+import os
+import platform
 
-# Point to Tesseract installation
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+# Auto-detect OS
+if platform.system() == 'Windows':
+    pytesseract.pytesseract.tesseract_cmd = \
+        r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+else:
+    pytesseract.pytesseract.tesseract_cmd = \
+        os.environ.get('TESSERACT_CMD', '/usr/bin/tesseract')
 
 def extract_text_from_image(image_file):
     """

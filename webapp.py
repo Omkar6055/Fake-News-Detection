@@ -311,4 +311,5 @@ if __name__ == "__main__":
     # Make factcheck_instance globally available
     app.config['FACTCHECK_INSTANCE'] = factcheck_instance
 
-    app.run(host="0.0.0.0", port=2024, debug=True)
+    port = int(os.environ.get('PORT', 2024))
+    app.run(host='0.0.0.0', port=port, debug=False)

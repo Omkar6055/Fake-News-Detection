@@ -23,10 +23,10 @@ def load_api_config(api_config: dict = None):
     merged_config = {}
 
     for key in keys:
-        value = api_config.get(key, None)
-        # Treat empty strings as missing so env vars take precedence
+        value = os.environ.get(key)
+        # Treat empty strings as missing so config file takes precedence only if env is empty
         if not value or (isinstance(value, str) and not value.strip()):
-            value = os.environ.get(key, None)
+            value = api_config.get(key, None)
         merged_config[key] = value
 
     for key in api_config.keys():

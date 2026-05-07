@@ -408,22 +408,5 @@ def run_server(host='127.0.0.1', port=2025, debug=False):
     app.run(host=host, port=port, debug=debug, threaded=True)
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='OpenFactVerification Chrome Extension Backend')
-    parser.add_argument('--host', type=str, default='127.0.0.1', help='Host to bind to (default: 127.0.0.1)')
-    parser.add_argument('--port', type=int, default=2025, help='Port to bind to (default: 2025)')
-    parser.add_argument('--config', type=str, default='api_config.yaml', help='Path to API config file')
-    parser.add_argument('--debug', action='store_true', help='Enable debug mode')
-    args = parser.parse_args()
-
-    # Initialize the FactCheck instance
-    if not initialize_factcheck(args.config):
-        logger.error("Failed to initialize FactCheck. Please check your configuration.")
-        logger.info("You can still start the server and configure API keys through the extension settings.")
-
-    # Start the server
-    try:
-        run_server(host=args.host, port=args.port, debug=args.debug)
-    except KeyboardInterrupt:
-        logger.info("Server stopped by user")
-    except Exception as e:
-        logger.error(f"Server error: {e}")
+    port = int(os.environ.get('PORT', 2025))
+    app.run(host='0.0.0.0', port=port, debug=False)
