@@ -1,17 +1,28 @@
 #!/bin/bash
 set -e
 
-echo "Installing system dependencies..."
-apt-get update -qq && apt-get install -y -qq tesseract-ocr
+# Install Tesseract OCR
+apt-get update && apt-get install -y \
+    tesseract-ocr \
+    tesseract-ocr-eng \
+    libtesseract-dev \
+    libglib2.0-0 \
+    libnss3 \
+    libnspr4 \
+    libatk1.0-0 \
+    libatk-bridge2.0-0 \
+    libcups2 \
+    libdrm2 \
+    libxkbcommon0 \
+    libxcomposite1 \
+    libxdamage1 \
+    libxfixes3 \
+    libxrandr2 \
+    libgbm1 \
+    libasound2
 
-echo "Installing Python dependencies..."
+# Install Python dependencies
 pip install -r requirements.txt
 
-echo "Downloading spaCy model..."
-python -m spacy download en_core_web_sm
-
-echo "Installing Playwright browsers..."
+# Install Playwright browsers
 playwright install chromium
-playwright install-deps chromium
-
-echo "Build complete!"
